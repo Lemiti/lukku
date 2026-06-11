@@ -60,6 +60,7 @@ dependencies {
     // ── AndroidX Core ────────────────────────────────────────────────────────
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.savedstate)
     implementation(libs.androidx.activity.compose)
 
     // ── Coroutines ───────────────────────────────────────────────────────────

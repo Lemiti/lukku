@@ -4,6 +4,7 @@ kotlin                     = "2.0.21"
 ksp                        = "2.0.21-1.0.28"
 coreKtx                    = "1.13.1"
 lifecycleRuntimeKtx        = "2.8.7"
+savedstate                 = "1.2.1"
 activityCompose            = "1.9.3"
 composeBom                 = "2024.12.01"
 coroutines                 = "1.9.0"
@@ -19,6 +20,7 @@ espresso                   = "3.6.1"
 # AndroidX Core
 androidx-core-ktx                      = { group = "androidx.core",           name = "core-ktx",                    version.ref = "coreKtx" }
 androidx-lifecycle-runtime-ktx         = { group = "androidx.lifecycle",       name = "lifecycle-runtime-ktx",       version.ref = "lifecycleRuntimeKtx" }
+androidx-savedstate                    = { group = "androidx.savedstate",       name = "savedstate",                  version.ref = "savedstate" }
 androidx-activity-compose              = { group = "androidx.activity",        name = "activity-compose",            version.ref = "activityCompose" }
 
 # Compose BOM + UI
