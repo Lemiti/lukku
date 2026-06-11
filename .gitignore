@@ -1,0 +1,23 @@
+# ─── Android build output ───────────────────────────────────────────────────
+**/build/
+
+# ─── Gradle caches ───────────────────────────────────────────────────────────
+.gradle/
+**/.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# ─── Local machine config (SDK path — never commit) ─────────────────────────
+local.properties
+**/local.properties
+
+# ─── IDE files ───────────────────────────────────────────────────────────────
+.idea/
+**/.idea/
+*.iml
+
+# ─── macOS & Linux noise ─────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ─── One-off scaffold scripts ────────────────────────────────────────────────
+android-app/scaffold_lukku.sh

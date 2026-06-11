@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Lukku</string>
+    <string name="accessibility_service_description">Lukku accountability service monitors app usage to help you stay focused.</string>
+</resources>
