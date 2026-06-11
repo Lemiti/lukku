@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lukku — Stop Scrolling. Start Executing.</title>
-  <meta name="description" content="Lukku is a brutal, empathetic AI accountability coach for students and startup builders. Morning brain-dumps, ruthless app blocking, and AI co-pilot rescheduling. Join the beta." />
+  <meta name="description"
+    content="Lukku is a brutal, empathetic AI accountability coach for students and startup builders. Morning brain-dumps, ruthless app blocking, and AI co-pilot rescheduling. Join the beta." />
+
+  <!-- Open Graph / LinkedIn / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lukku.vercel.app/">
+  <meta property="og:title" content="Lukku | Stop Scrolling. Start Executing.">
+  <meta property="og:description"
+    content="Willpower is dead. Let Lukku force you to focus with native Android OS app blocking and AI scheduling.">
+  <meta property="og:image" content="https://lukku.vercel.app/assets/social_preview.png">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://lukku.vercel.app/">
+  <meta name="twitter:title" content="Lukku | Stop Scrolling. Start Executing.">
+  <meta name="twitter:description"
+    content="Willpower is dead. Let Lukku force you to focus with native Android OS app blocking and AI scheduling.">
+  <meta name="twitter:image" content="https://lukku.vercel.app/assets/social_preview.png">
+
 
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -34,10 +53,14 @@
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
 
   <style>
-    body { background-color: #0A0A0A; font-family: 'Inter', sans-serif; }
+    body {
+      background-color: #0A0A0A;
+      font-family: 'Inter', sans-serif;
+    }
 
     /* Noise texture overlay */
     body::before {
@@ -49,9 +72,17 @@
       z-index: 0;
     }
 
-    .glow-red { box-shadow: 0 0 40px rgba(229, 57, 53, 0.25); }
-    .glow-red-sm { box-shadow: 0 0 20px rgba(229, 57, 53, 0.3); }
-    .text-glow { text-shadow: 0 0 60px rgba(229, 57, 53, 0.4); }
+    .glow-red {
+      box-shadow: 0 0 40px rgba(229, 57, 53, 0.25);
+    }
+
+    .glow-red-sm {
+      box-shadow: 0 0 20px rgba(229, 57, 53, 0.3);
+    }
+
+    .text-glow {
+      text-shadow: 0 0 60px rgba(229, 57, 53, 0.4);
+    }
 
     /* Gradient mesh hero background */
     .hero-bg {
@@ -63,9 +94,15 @@
 
     /* Shimmer animation on CTA */
     @keyframes shimmer {
-      0% { background-position: -200% center; }
-      100% { background-position: 200% center; }
+      0% {
+        background-position: -200% center;
+      }
+
+      100% {
+        background-position: 200% center;
+      }
     }
+
     .btn-shimmer {
       background: linear-gradient(90deg, #E53935 0%, #EF5350 40%, #ff7e7e 50%, #EF5350 60%, #E53935 100%);
       background-size: 200% auto;
@@ -74,15 +111,45 @@
 
     /* Fade in up animation */
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    .animate-fade-in-up { animation: fadeInUp 0.7s ease forwards; }
-    .delay-100 { animation-delay: 0.1s; opacity: 0; }
-    .delay-200 { animation-delay: 0.2s; opacity: 0; }
-    .delay-300 { animation-delay: 0.3s; opacity: 0; }
-    .delay-400 { animation-delay: 0.4s; opacity: 0; }
-    .delay-500 { animation-delay: 0.5s; opacity: 0; }
+
+    .animate-fade-in-up {
+      animation: fadeInUp 0.7s ease forwards;
+    }
+
+    .delay-100 {
+      animation-delay: 0.1s;
+      opacity: 0;
+    }
+
+    .delay-200 {
+      animation-delay: 0.2s;
+      opacity: 0;
+    }
+
+    .delay-300 {
+      animation-delay: 0.3s;
+      opacity: 0;
+    }
+
+    .delay-400 {
+      animation-delay: 0.4s;
+      opacity: 0;
+    }
+
+    .delay-500 {
+      animation-delay: 0.5s;
+      opacity: 0;
+    }
 
     /* Step number glow */
     .step-num {
@@ -96,27 +163,37 @@
     .card-hover {
       transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     }
+
     .card-hover:hover {
       transform: translateY(-4px);
       border-color: rgba(229, 57, 53, 0.4) !important;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px rgba(229, 57, 53, 0.1);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(229, 57, 53, 0.1);
     }
 
     /* Divider line */
     .divider {
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(229,57,53,0.3), transparent);
+      background: linear-gradient(90deg, transparent, rgba(229, 57, 53, 0.3), transparent);
     }
 
     /* Video wrapper */
     .video-glow {
-      box-shadow: 0 0 0 1px rgba(229,57,53,0.2), 0 30px 80px rgba(0,0,0,0.6), 0 0 60px rgba(229,57,53,0.08);
+      box-shadow: 0 0 0 1px rgba(229, 57, 53, 0.2), 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px rgba(229, 57, 53, 0.08);
     }
 
     /* Scrollbar */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #0A0A0A; }
-    ::-webkit-scrollbar-thumb { background: #E53935; border-radius: 3px; }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0A0A0A;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #E53935;
+      border-radius: 3px;
+    }
   </style>
 </head>
 
@@ -129,61 +206,55 @@
         <img src="assets/lukku_logo.png" alt="Lukku Logo" class="h-8 w-auto" />
       </div>
       <a href="#join"
-         class="btn-shimmer text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-all hover:scale-105 active:scale-95">
+        class="btn-shimmer text-white font-semibold text-sm px-5 py-2.5 rounded-lg transition-all hover:scale-105 active:scale-95">
         Join Beta
       </a>
     </div>
   </nav>
 
   <!-- ===== HERO ===== -->
-  <section class="hero-bg min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24 pb-16 relative z-10">
+  <section
+    class="hero-bg min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24 pb-16 relative z-10">
     <!-- Badge -->
-    <div class="animate-fade-in-up delay-100 inline-flex items-center gap-2 bg-rooster-500/10 border border-rooster-500/30 text-rooster-400 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-8">
+    <div
+      class="animate-fade-in-up delay-100 inline-flex items-center gap-2 bg-rooster-500/10 border border-rooster-500/30 text-rooster-400 text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-8">
       <span class="w-1.5 h-1.5 rounded-full bg-rooster-500 animate-pulse"></span>
       Android Beta — Limited Early Access
     </div>
 
     <!-- Headline -->
-    <h1 class="animate-fade-in-up delay-200 text-glow text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tight mb-6 max-w-5xl">
-      Stop scrolling.<br/>
+    <h1
+      class="animate-fade-in-up delay-200 text-glow text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tight mb-6 max-w-5xl">
+      Stop scrolling.<br />
       <span class="text-rooster-500">Start executing.</span>
     </h1>
 
     <!-- Sub-headline -->
-    <p class="animate-fade-in-up delay-300 text-gray-400 text-lg sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-light">
-      Lukku is the AI accountability coach that turns your chaotic thoughts into locked-in schedules — then <em class="text-white not-italic font-medium">enforces them</em>. Built for students cramming for finals and builders shipping at midnight.
+    <p
+      class="animate-fade-in-up delay-300 text-gray-400 text-lg sm:text-xl max-w-2xl mx-auto mb-12 leading-relaxed font-light">
+      Lukku is the AI accountability coach that turns your chaotic thoughts into locked-in schedules — then <em
+        class="text-white not-italic font-medium">enforces them</em>. Built for students cramming for finals and
+      builders shipping at midnight.
     </p>
 
     <!-- Email Form -->
-    <form id="early-access" class="animate-fade-in-up delay-400 w-full max-w-md mx-auto flex flex-col sm:flex-row gap-3 mb-6">
-      <input
-        type="email"
-        name="email"
-        id="email-input"
-        placeholder="Enter your email address"
-        required
-        class="w-full bg-surfaceElevated border border-gray-800 text-white placeholder-gray-500 rounded-lg px-5 py-4 focus:outline-none focus:border-rooster-500 focus:ring-1 focus:ring-rooster-500 transition flex-1"
-      />
-      <button
-        type="submit"
+    <form id="early-access"
+      class="animate-fade-in-up delay-400 w-full max-w-md mx-auto flex flex-col sm:flex-row gap-3 mb-6">
+      <input type="email" name="email" id="email-input" placeholder="Enter your email address" required
+        class="w-full bg-surfaceElevated border border-gray-800 text-white placeholder-gray-500 rounded-lg px-5 py-4 focus:outline-none focus:border-rooster-500 focus:ring-1 focus:ring-rooster-500 transition flex-1" />
+      <button type="submit"
         class="btn-shimmer glow-red-sm whitespace-nowrap text-white font-bold px-7 py-4 rounded-lg transition-all hover:scale-105 active:scale-95 text-sm uppercase tracking-wider">
         Join the Beta
       </button>
     </form>
-    <p class="animate-fade-in-up delay-500 text-gray-600 text-xs">No spam. No fluff. Just accountability. Unsubscribe anytime.</p>
+    <p class="animate-fade-in-up delay-500 text-gray-600 text-xs">No spam. No fluff. Just accountability. Unsubscribe
+      anytime.</p>
 
     <!-- Video Demo -->
     <div class="animate-fade-in-up delay-500 mt-20 w-full max-w-3xl mx-auto">
       <p class="text-gray-600 text-xs uppercase tracking-widest font-semibold mb-4">See it in action</p>
       <div class="video-glow rounded-2xl overflow-hidden border border-gray-800/60">
-        <video
-          src="assets/lukku_promo_vide.mp4"
-          autoplay
-          loop
-          muted
-          playsinline
-          class="w-full h-auto block"
-        ></video>
+        <video src="assets/lukku_promo_vide.mp4" autoplay loop muted playsinline class="w-full h-auto block"></video>
       </div>
     </div>
   </section>
@@ -194,7 +265,7 @@
   <section class="py-24 px-6 relative z-10">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-3xl sm:text-4xl font-black mb-6 leading-tight">
-        You know what you need to do.<br/>
+        You know what you need to do.<br />
         <span class="text-gray-500">You're just not doing it.</span>
       </h2>
       <p class="text-gray-400 text-lg max-w-2xl mx-auto leading-relaxed">
@@ -215,7 +286,8 @@
       <!-- Section label -->
       <div class="text-center mb-16">
         <p class="text-rooster-500 text-xs font-bold uppercase tracking-widest mb-3">How it works</p>
-        <h2 class="text-4xl sm:text-5xl font-black">Three moves.<br/><span class="text-gray-500">No excuses.</span></h2>
+        <h2 class="text-4xl sm:text-5xl font-black">Three moves.<br /><span class="text-gray-500">No excuses.</span>
+        </h2>
       </div>
 
       <!-- Steps grid -->
@@ -223,42 +295,68 @@
 
         <!-- Step 1 -->
         <div class="card-hover bg-surfaceCard border border-gray-800/80 rounded-2xl p-8 relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-40 h-40 bg-rooster-500/5 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+          <div
+            class="absolute top-0 right-0 w-40 h-40 bg-rooster-500/5 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none">
+          </div>
           <span class="step-num text-6xl font-black leading-none mb-6 block">01</span>
           <h3 class="text-xl font-bold mb-3">The Morning Brain-Dump</h3>
           <p class="text-gray-400 leading-relaxed text-sm">
-            Wake up. Open Lukku. Speak your chaos: exams, sprint tasks, lab deadlines, gym, sleep. Our AI listens, parses, and hands you back a locked, time-blocked schedule in under 60 seconds. No typing. No planning paralysis. Just clarity.
+            Wake up. Open Lukku. Speak your chaos: exams, sprint tasks, lab deadlines, gym, sleep. Our AI listens,
+            parses, and hands you back a locked, time-blocked schedule in under 60 seconds. No typing. No planning
+            paralysis. Just clarity.
           </p>
           <div class="mt-6 flex items-center gap-2 text-xs text-rooster-500 font-semibold uppercase tracking-wider">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4z"/><path d="M5.5 9.643a.75.75 0 00-1.5 0V10c0 3.06 2.029 5.66 4.818 6.498v1.252h-1.318a.75.75 0 000 1.5h4a.75.75 0 000-1.5h-1.318v-1.252A6.75 6.75 0 0015.5 10v-.357a.75.75 0 00-1.5 0V10a5.25 5.25 0 01-10.5 0v-.357z"/></svg>
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4z" />
+              <path
+                d="M5.5 9.643a.75.75 0 00-1.5 0V10c0 3.06 2.029 5.66 4.818 6.498v1.252h-1.318a.75.75 0 000 1.5h4a.75.75 0 000-1.5h-1.318v-1.252A6.75 6.75 0 0015.5 10v-.357a.75.75 0 00-1.5 0V10a5.25 5.25 0 01-10.5 0v-.357z" />
+            </svg>
             Voice → Schedule in 60s
           </div>
         </div>
 
         <!-- Step 2 -->
         <div class="card-hover bg-surfaceCard border border-gray-800/80 rounded-2xl p-8 relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-40 h-40 bg-rooster-500/5 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+          <div
+            class="absolute top-0 right-0 w-40 h-40 bg-rooster-500/5 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none">
+          </div>
           <span class="step-num text-6xl font-black leading-none mb-6 block">02</span>
           <h3 class="text-xl font-bold mb-3">Ruthless Execution</h3>
           <p class="text-gray-400 leading-relaxed text-sm">
-            During a focus block, Lukku owns your phone. Try to open Instagram, TikTok, or YouTube — and we pull a full-screen OS-level overlay and force you back. No bypass. No snooze. Your future self set these rules. Lukku enforces them.
+            During a focus block, Lukku owns your phone. Try to open Instagram, TikTok, or YouTube — and we pull a
+            full-screen OS-level overlay and force you back. No bypass. No snooze. Your future self set these rules.
+            Lukku enforces them.
           </p>
           <div class="mt-6 flex items-center gap-2 text-xs text-rooster-500 font-semibold uppercase tracking-wider">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd"/></svg>
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
+                clip-rule="evenodd" />
+            </svg>
             Native Android OS Blocking
           </div>
         </div>
 
         <!-- Step 3 -->
         <div class="card-hover bg-surfaceCard border border-gray-800/80 rounded-2xl p-8 relative overflow-hidden">
-          <div class="absolute top-0 right-0 w-40 h-40 bg-rooster-500/5 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+          <div
+            class="absolute top-0 right-0 w-40 h-40 bg-rooster-500/5 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none">
+          </div>
           <span class="step-num text-6xl font-black leading-none mb-6 block">03</span>
           <h3 class="text-xl font-bold mb-3">The Co-Pilot &amp; Evening Review</h3>
           <p class="text-gray-400 leading-relaxed text-sm">
-            Miss a block? One tap — your AI co-pilot restructures the entire day around what's left. No guilt spirals. Just a new plan. At night, Lukku delivers an honest, data-driven summary of what you actually did. Growth requires truth.
+            Miss a block? One tap — your AI co-pilot restructures the entire day around what's left. No guilt spirals.
+            Just a new plan. At night, Lukku delivers an honest, data-driven summary of what you actually did. Growth
+            requires truth.
           </p>
           <div class="mt-6 flex items-center gap-2 text-xs text-rooster-500 font-semibold uppercase tracking-wider">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10.75 10.818v2.614A3.13 3.13 0 0011.888 13c.482-.315.612-.648.612-.875 0-.227-.13-.56-.612-.875a3.13 3.13 0 00-1.138-.432zM8.33 8.62c.053.055.115.11.184.164.208.16.46.284.736.363V6.603a2.45 2.45 0 00-.91.401c-.482.315-.612.648-.612.875 0 .144.075.342.282.56z"/><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.845v-.005a2.75 2.75 0 00-1.5 0v.006c-.618.12-1.177.395-1.598.68a2.75 2.75 0 00-1.152 2.226c0 1.19.8 2.038 1.73 2.56l.02.012V13.5a2.75 2.75 0 001.5 0v-.863l.02-.012C10.7 12.1 11.5 11.252 11.5 10.062a2.75 2.75 0 00-1.152-2.226 3.35 3.35 0 00-.598-.38z" clip-rule="evenodd"/></svg>
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M10.75 10.818v2.614A3.13 3.13 0 0011.888 13c.482-.315.612-.648.612-.875 0-.227-.13-.56-.612-.875a3.13 3.13 0 00-1.138-.432zM8.33 8.62c.053.055.115.11.184.164.208.16.46.284.736.363V6.603a2.45 2.45 0 00-.91.401c-.482.315-.612.648-.612.875 0 .144.075.342.282.56z" />
+              <path fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-11.845v-.005a2.75 2.75 0 00-1.5 0v.006c-.618.12-1.177.395-1.598.68a2.75 2.75 0 00-1.152 2.226c0 1.19.8 2.038 1.73 2.56l.02.012V13.5a2.75 2.75 0 001.5 0v-.863l.02-.012C10.7 12.1 11.5 11.252 11.5 10.062a2.75 2.75 0 00-1.152-2.226 3.35 3.35 0 00-.598-.38z"
+                clip-rule="evenodd" />
+            </svg>
             AI Reschedule + Nightly Debrief
           </div>
         </div>
@@ -272,10 +370,12 @@
   <section class="py-24 px-6 relative z-10">
     <div class="max-w-3xl mx-auto text-center">
       <svg class="w-10 h-10 text-rooster-500/40 mx-auto mb-6" fill="currentColor" viewBox="0 0 32 32">
-        <path d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7c0-1.657 1.343-3 3-3V8zm18 0c-3.314 0-6 2.686-6 6v10h10V14h-7c0-1.657 1.343-3 3-3V8z"/>
+        <path
+          d="M10 8C6.686 8 4 10.686 4 14v10h10V14H7c0-1.657 1.343-3 3-3V8zm18 0c-3.314 0-6 2.686-6 6v10h10V14h-7c0-1.657 1.343-3 3-3V8z" />
       </svg>
       <blockquote class="text-2xl sm:text-3xl font-semibold leading-snug text-white mb-6">
-        "I had three deadlines, two exams, and zero structure. I talked to Lukku for 90 seconds. It handed me a schedule. I actually shipped."
+        "I had three deadlines, two exams, and zero structure. I talked to Lukku for 90 seconds. It handed me a
+        schedule. I actually shipped."
       </blockquote>
       <cite class="text-gray-500 text-sm not-italic">— Beta tester, CS student &amp; startup co-founder</cite>
     </div>
@@ -288,23 +388,17 @@
     <div class="max-w-2xl mx-auto text-center">
       <p class="text-rooster-500 text-xs font-bold uppercase tracking-widest mb-4">Limited Beta Spots</p>
       <h2 class="text-4xl sm:text-5xl font-black mb-4 leading-tight">
-        The procrastination<br/>ends <span class="text-rooster-500">today.</span>
+        The procrastination<br />ends <span class="text-rooster-500">today.</span>
       </h2>
       <p class="text-gray-400 mb-10 text-lg">
-        We're letting in a small group of builders and students who are serious about execution. If you're not ready to be held accountable — this isn't for you.
+        We're letting in a small group of builders and students who are serious about execution. If you're not ready to
+        be held accountable — this isn't for you.
       </p>
 
       <form id="early-access-bottom" class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-        <input
-          type="email"
-          name="email"
-          id="email-input-bottom"
-          placeholder="Enter your email address"
-          required
-          class="w-full bg-surfaceElevated border border-gray-800 text-white placeholder-gray-500 rounded-lg px-5 py-4 focus:outline-none focus:border-rooster-500 focus:ring-1 focus:ring-rooster-500 transition flex-1"
-        />
-        <button
-          type="submit"
+        <input type="email" name="email" id="email-input-bottom" placeholder="Enter your email address" required
+          class="w-full bg-surfaceElevated border border-gray-800 text-white placeholder-gray-500 rounded-lg px-5 py-4 focus:outline-none focus:border-rooster-500 focus:ring-1 focus:ring-rooster-500 transition flex-1" />
+        <button type="submit"
           class="btn-shimmer glow-red-sm whitespace-nowrap text-white font-bold px-7 py-4 rounded-lg transition-all hover:scale-105 active:scale-95 text-sm uppercase tracking-wider">
           I'm In
         </button>
@@ -324,7 +418,7 @@
         © 2026 Lukku. Built for those who ship.
       </p>
       <p class="text-gray-700 text-xs">
-        <a href="mailto:hello@lukku.app" class="hover:text-rooster-500 transition-colors">hello@lukku.app</a>
+        <a href="mailto:hello@lukku.app" class="hover:text-rooster-500 transition-colors">leminegeso@gmail.com/</a>
       </p>
     </div>
   </footer>
@@ -366,14 +460,14 @@
       }, 3000);
     }
 
-    document.getElementById('early-access').addEventListener('submit', function(e) {
+    document.getElementById('early-access').addEventListener('submit', function (e) {
       e.preventDefault();
       const email = document.getElementById('email-input').value;
       const btn = this.querySelector('button');
       submitLoopsForm(email, btn, this);
     });
 
-    document.getElementById('early-access-bottom').addEventListener('submit', function(e) {
+    document.getElementById('early-access-bottom').addEventListener('submit', function (e) {
       e.preventDefault();
       const email = document.getElementById('email-input-bottom').value;
       const btn = this.querySelector('button');
@@ -382,4 +476,5 @@
   </script>
 
 </body>
+
 </html>
