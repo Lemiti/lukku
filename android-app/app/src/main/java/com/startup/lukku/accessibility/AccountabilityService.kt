@@ -7,60 +7,59 @@ import com.startup.lukku.accessibility.overlay.ComposeOverlayManager
 
 class AccountabilityService : AccessibilityService() {
 
-    // Hardcoded hit-list for the MVP
-    private val blockedApps = setOf(
-        "com.instagram.android",
-        "com.zhiliaoapp.musically", // TikTok
-        "com.twitter.android",      // X
-        "org.telegram.messenger",   // Telegram
-        "com.android.chrome",       // Chrome
-        "com.android.vending"       // Play Store
-    )
-
     private lateinit var overlayManager: ComposeOverlayManager
 
-    // Tracks the last blocked package so we can dismiss the overlay the
-    // moment the user navigates away from the blocked app.
-    private var activeBlockedPackage: String? = null
+    private val blockedApps = setOf(
+        "com.instagram.android",
+        "org.telegram.messenger",
+        "com.android.chrome",
+        "com.android.vending"
+    )
+
+    // A list of safe apps (like your home launcher) to trigger the hide overlay command
+    private val safeApps = setOf(
+        "com.sec.android.app.launcher", // Samsung Home Screen
+        "com.startup.lukku"             // Our own app
+    )
 
     override fun onServiceConnected() {
         super.onServiceConnected()
-        overlayManager = ComposeOverlayManager(applicationContext)
         Log.w("LukkuEngine", "Service Connected. The Rooster is watching.")
+        
+        // Initialize the UI Manager
+        overlayManager = ComposeOverlayManager(this)
     }
 
     override fun onAccessibilityEvent(event: AccessibilityEvent?) {
-        if (event == null || event.eventType != AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) return
+            if (event == null || event.eventType != AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED) return
 
-        val packageName = event.packageName?.toString() ?: return
+            val packageName = event.packageName?.toString() ?: return
 
-        if (blockedApps.contains(packageName)) {
-            // Only trigger if this is a *new* blocked target — avoids
-            // re-inflating the overlay on every sub-window state change
-            // within the same blocked app.
-            if (activeBlockedPackage != packageName) {
-                activeBlockedPackage = packageName
+            // 1. THE LOOP BREAKER: If the OS reports our own app taking focus, ignore it entirely.
+            if (packageName == "com.startup.lukku" || packageName.contains("systemui")) {
+                return
+            }
+
+            // 2. THE TRIGGER: If it is a blocked app, show the overlay.
+            if (blockedApps.contains(packageName)) {
                 Log.e("LukkuEngine", "TARGET ACQUIRED: $packageName. INJECTING OVERLAY.")
                 overlayManager.showOverlay(packageName)
-            }
-        } else {
-            // User navigated away from the blocked app — tear down overlay.
-            if (activeBlockedPackage != null) {
-                Log.d("LukkuEngine", "Target left. Hiding overlay. Allowed: $packageName")
+            } 
+            // 3. THE DISMISSAL: If it is any other app (like the home launcher), hide the overlay.
+            else {
                 overlayManager.hideOverlay()
-                activeBlockedPackage = null
             }
-        }
     }
 
     override fun onInterrupt() {
         Log.e("LukkuEngine", "Service Interrupted.")
-        overlayManager.hideOverlay()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        overlayManager.destroy()
-        Log.w("LukkuEngine", "Service destroyed. Overlay cleaned up.")
+        // Prevent memory leaks if the service is killed
+        if (::overlayManager.isInitialized) {
+            overlayManager.hideOverlay()
+        }
     }
 }
